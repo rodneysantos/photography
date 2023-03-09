@@ -4,10 +4,13 @@
   "scripts": {
     "build": "remix build",
     "dev": "remix dev",
+    "husky:prepare": "husky install",
+    "lint": "rome check ./app && rome format ./app --write",
+    "lint:commit": "commitlint",
     "start": "cross-env NODE_ENV=production netlify dev",
-    "typecheck": "tsc",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "sb": "start-storybook -p 6006",
+    "sb:build": "build-storybook",
+    "typecheck": "tsc"
   },
   "dependencies": {
     "@netlify/functions": "1.4.0",
@@ -22,6 +25,8 @@
   },
   "devDependencies": {
     "@babel/core": "7.21.0",
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
     "@remix-run/dev": "1.14.0",
     "@remix-run/eslint-config": "1.14.0",
     "@remix-run/serve": "1.14.0",
@@ -40,7 +45,9 @@
     "concurrently": "7.6.0",
     "eslint": "8.35.0",
     "eslint-plugin-storybook": "0.6.11",
+    "husky": "8.0.3",
     "postcss": "8.4.21",
+    "rome": "11.0.0",
     "tailwindcss": "3.2.7",
     "typescript": "4.9.5"
   },
