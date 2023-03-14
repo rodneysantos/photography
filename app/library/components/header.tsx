@@ -34,6 +34,7 @@ export const Header = () => {
 				)}`}
 			>
 				<Menu
+					defaultActiveItems={[0]}
 					className={`transition-opacity will-change-auto ${clsx({
 						"opacity-0": !isMenuOpen,
 					})}`}

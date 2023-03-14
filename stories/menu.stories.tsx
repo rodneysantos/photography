@@ -1,12 +1,19 @@
-import { ComponentMeta } from "@storybook/react";
-import { MenuSB } from "./menu";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { Menu, MenuProps } from "../app/library/components/menu";
+
+const Template: ComponentStory<typeof Menu> = ({ defaultActiveItems }) => {
+	return <Menu defaultActiveItems={defaultActiveItems} />;
+};
 
 export default {
 	title: "Menu",
-	component: MenuSB,
+	component: Menu,
 	parameters: {
 		layout: "centered",
 	},
-} as ComponentMeta<typeof MenuSB>;
+} as ComponentMeta<typeof Menu>;
 
-export const Primary = () => <MenuSB />;
+export const Basic = Template.bind({});
+Basic.args = {
+	defaultActiveItems: [0],
+} as MenuProps;

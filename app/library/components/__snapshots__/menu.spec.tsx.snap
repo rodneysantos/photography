@@ -1,0 +1,34 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`menu > renders correctly 1`] = `
+<div>
+  <div
+    className="flex flex-row justify-center"
+  >
+    <div
+      className="px-2 py-1 mx-2 text-center border-2 cursor-pointer border-neutral-900 "
+      data-testid="black and white"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+    >
+      black and white
+    </div>
+    <div
+      className="px-2 py-1 mx-2 text-center border-2 cursor-pointer border-neutral-900 "
+      data-testid="color"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+    >
+      color
+    </div>
+    <div
+      className="px-2 py-1 mx-2 text-center border-2 cursor-pointer border-neutral-900 "
+      data-testid="low-key"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+    >
+      low-key
+    </div>
+  </div>
+</div>
+`;
