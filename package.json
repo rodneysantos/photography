@@ -12,6 +12,7 @@
     "sb:build": "build-storybook",
     "test": "vitest run --config ./vitest.config.ts",
     "test:cov": "vitest run --coverage --config ./vitest.config.ts",
+    "test:dev": "vitest dev --config ./vitest.config.ts",
     "test:snap": "vitest run --config ./vitest.config.ts -u",
     "typecheck": "tsc"
   },

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export interface MenuProps {
 	// The class name to apply to the div element.
@@ -6,6 +6,9 @@ export interface MenuProps {
 
 	// The ids of the active items.
 	defaultActiveItems: number[];
+
+	// The callback to call when the active items change.
+	onActiveItemsChange: (activeItems: string[]) => void;
 }
 
 const activeMenuClasses = "bg-neutral-900 text-neutral-100";
@@ -15,7 +18,11 @@ const menuItems = [
 	{ id: 2, name: "low-key" },
 ];
 
-export const Menu = ({ defaultActiveItems, className }: MenuProps) => {
+export const Menu = ({
+	defaultActiveItems,
+	onActiveItemsChange,
+	className,
+}: MenuProps) => {
 	const [activeItems, setActiveItems] = useState<number[]>(defaultActiveItems);
 
 	// Toggle the active state of an item.
@@ -29,6 +36,13 @@ export const Menu = ({ defaultActiveItems, className }: MenuProps) => {
 		} else {
 			setActiveItems([...activeItems, id]);
 		}
+
+		const itemNames = menuItems
+			.filter(({ id }) => activeItems.includes(id))
+			.map(({ name }) => name);
+
+		console.log(activeItems, itemNames);
+		onActiveItemsChange(itemNames);
 	};
 
 	return (

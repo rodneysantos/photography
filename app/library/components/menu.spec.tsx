@@ -1,12 +1,25 @@
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { act, render } from "@testing-library/react";
 import renderer from "react-test-renderer";
 import { Menu } from "./menu";
 
 describe("menu", () => {
+	const onActiveItemsChange = vi.fn();
+
+	beforeEach(() => {
+		onActiveItemsChange.mockReset();
+	});
+
 	it("renders correctly", () => {
 		// arrange
-		const tree = renderer.create(<Menu defaultActiveItems={[]} />).toJSON();
+		const tree = renderer
+			.create(
+				<Menu
+					defaultActiveItems={[]}
+					onActiveItemsChange={onActiveItemsChange}
+				/>,
+			)
+			.toJSON();
 
 		// assert
 		expect(tree).toMatchSnapshot();
@@ -14,7 +27,12 @@ describe("menu", () => {
 
 	it("highlights the items on render", () => {
 		// arrange
-		const { getByTestId } = render(<Menu defaultActiveItems={[0, 2]} />);
+		const { getByTestId } = render(
+			<Menu
+				defaultActiveItems={[0, 2]}
+				onActiveItemsChange={onActiveItemsChange}
+			/>,
+		);
 
 		// act
 		const bnwItem = getByTestId("black and white");
@@ -27,7 +45,12 @@ describe("menu", () => {
 
 	it("higlights an item on click", () => {
 		// arrange
-		const { getByTestId } = render(<Menu defaultActiveItems={[]} />);
+		const { getByTestId } = render(
+			<Menu
+				defaultActiveItems={[]}
+				onActiveItemsChange={onActiveItemsChange}
+			/>,
+		);
 
 		// act
 		const colorItem = getByTestId("color");
@@ -37,5 +60,45 @@ describe("menu", () => {
 
 		// assert
 		expect(colorItem.className).toContain("bg-neutral-900");
+	});
+
+	it("unhiglights an item on click", () => {
+		// arrange
+		const { getByTestId } = render(
+			<Menu
+				defaultActiveItems={[0]}
+				onActiveItemsChange={onActiveItemsChange}
+			/>,
+		);
+		const bnwItem = getByTestId("black and white");
+
+		// act
+		act(() => {
+			bnwItem.click();
+		});
+
+		// assert
+		expect(bnwItem.className).not.toContain("bg-neutral-900");
+	});
+
+	it("emits the active items on click", () => {
+		// arrange
+		const { getByTestId } = render(
+			<Menu
+				defaultActiveItems={[]}
+				onActiveItemsChange={onActiveItemsChange}
+			/>,
+		);
+		const colorItem = getByTestId("color");
+		const lowkeyItem = getByTestId("low-key");
+
+		// act
+		act(() => {
+			colorItem.click();
+			lowkeyItem.click();
+		});
+
+		// assert
+		expect(onActiveItemsChange).toHaveBeenCalledTimes(2);
 	});
 });

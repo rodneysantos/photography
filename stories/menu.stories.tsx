@@ -2,7 +2,12 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Menu, MenuProps } from "../app/library/components/menu";
 
 const Template: ComponentStory<typeof Menu> = ({ defaultActiveItems }) => {
-	return <Menu defaultActiveItems={defaultActiveItems} />;
+	return (
+		<Menu
+			defaultActiveItems={defaultActiveItems}
+			onActiveItemsChange={() => {}}
+		/>
+	);
 };
 
 export default {
