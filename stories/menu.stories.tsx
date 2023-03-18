@@ -5,7 +5,7 @@ const Template: ComponentStory<typeof Menu> = ({ defaultActiveItems }) => {
 	return (
 		<Menu
 			defaultActiveItems={defaultActiveItems}
-			onActiveItemsChange={() => {}}
+			onActiveItemsChange={console.log}
 		/>
 	);
 };
@@ -20,5 +20,5 @@ export default {
 
 export const Basic = Template.bind({});
 Basic.args = {
-	defaultActiveItems: [0],
+	defaultActiveItems: ["color"],
 } as MenuProps;

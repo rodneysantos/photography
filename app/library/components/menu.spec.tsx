@@ -29,7 +29,7 @@ describe("menu", () => {
 		// arrange
 		const { getByTestId } = render(
 			<Menu
-				defaultActiveItems={[0, 2]}
+				defaultActiveItems={["black and white", "low-key"]}
 				onActiveItemsChange={onActiveItemsChange}
 			/>,
 		);
@@ -66,7 +66,7 @@ describe("menu", () => {
 		// arrange
 		const { getByTestId } = render(
 			<Menu
-				defaultActiveItems={[0]}
+				defaultActiveItems={["black and white"]}
 				onActiveItemsChange={onActiveItemsChange}
 			/>,
 		);
@@ -100,5 +100,7 @@ describe("menu", () => {
 
 		// assert
 		expect(onActiveItemsChange).toHaveBeenCalledTimes(2);
+		expect(onActiveItemsChange).toHaveBeenCalledWith(["color"]);
+		expect(onActiveItemsChange).toHaveBeenCalledWith(["low-key"]);
 	});
 });

@@ -5,7 +5,7 @@ export interface MenuProps {
 	className?: string;
 
 	// The ids of the active items.
-	defaultActiveItems: number[];
+	defaultActiveItems: string[];
 
 	// The callback to call when the active items change.
 	onActiveItemsChange: (activeItems: string[]) => void;
@@ -23,33 +23,25 @@ export const Menu = ({
 	onActiveItemsChange,
 	className,
 }: MenuProps) => {
-	const [activeItems, setActiveItems] = useState<number[]>(defaultActiveItems);
+	const [activeItems, setActiveItems] = useState(defaultActiveItems);
 
 	// Toggle the active state of an item.
 	// If the item is active, remove it from the active items.
 	// If the item is not active, add it to the active items.
-	const toggleItem = (id: number) => {
-		const isActive = activeItems.includes(id);
+	const toggleItem = (name: string) => {
+		const updatedActiveItems = activeItems.includes(name)
+			? activeItems.filter((item) => item !== name)
+			: [...activeItems, name];
 
-		if (isActive) {
-			setActiveItems(activeItems.filter((item) => item !== id));
-		} else {
-			setActiveItems([...activeItems, id]);
-		}
-
-		const itemNames = menuItems
-			.filter(({ id }) => activeItems.includes(id))
-			.map(({ name }) => name);
-
-		console.log(activeItems, itemNames);
-		onActiveItemsChange(itemNames);
+		setActiveItems(updatedActiveItems);
+		onActiveItemsChange(updatedActiveItems);
 	};
 
 	return (
 		<div className={className}>
 			<div className="flex flex-row justify-center">
 				{menuItems.map((item) => {
-					const isActive = activeItems.includes(item.id);
+					const isActive = activeItems.includes(item.name);
 					const className = isActive ? activeMenuClasses : "";
 
 					return (
@@ -57,8 +49,7 @@ export const Menu = ({
 							key={item.id}
 							data-testid={item.name}
 							className={`px-2 py-1 mx-2 text-center border-2 cursor-pointer border-neutral-900 ${className}`}
-							onClick={() => toggleItem(item.id)}
-							onKeyDown={() => {}}
+							onClick={() => toggleItem(item.name)}
 						>
 							{item.name}
 						</div>
