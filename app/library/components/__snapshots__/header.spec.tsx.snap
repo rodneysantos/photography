@@ -57,7 +57,6 @@ exports[`header > renders correctly 1`] = `
       className="w-5 mt-4 transition-opacity cursor-pointer will-change-auto opacity-20"
       data-testid="chevronDownIcon"
       onClick={[Function]}
-      onKeyDown={[Function]}
       viewBox="0 0 512 512"
       xmlns="http://www.w3.org/2000/svg"
     >

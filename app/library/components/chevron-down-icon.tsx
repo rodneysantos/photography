@@ -1,6 +1,6 @@
 interface ChevronDownIconProps {
 	// The function to call when the SVG element is clicked.
-	clickHandler: () => void;
+	onClick: () => void;
 
 	// The class name to apply to the SVG element.
 	className?: string;
@@ -8,13 +8,13 @@ interface ChevronDownIconProps {
 
 export const ChevronDownIcon = ({
 	className,
-	clickHandler,
+	onClick,
 }: ChevronDownIconProps) => {
 	return (
 		<svg
+			data-testid="chevronDownIcon"
 			className={className}
-			onClick={clickHandler}
-			onKeyDown={() => {}}
+			onClick={onClick}
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 512 512"
 		>
