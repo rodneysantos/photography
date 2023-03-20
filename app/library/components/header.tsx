@@ -1,16 +1,21 @@
 import { clsx } from "clsx";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { ChevronDownIcon } from "./chevron-down-icon";
-import { Menu } from "./menu";
+import { Item, Menu } from "./menu";
 
-export const Header = () => {
+interface HeaderProps {
+	// The function that is called when the active items change.
+	onActiveItemsChange: (activeItems: Item[]) => void;
+}
+
+export const Header = ({ onActiveItemsChange }: HeaderProps) => {
 	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
 	// The useCallback hook is used to memoize the function handleMenuVisibility
 	// so that it is only re-created when the value of isMenuOpen changes.
-	const handleMenuVisibility = useCallback(() => {
-		setIsMenuOpen(!isMenuOpen);
-	}, [isMenuOpen]);
+	const handleMenuVisibility = () => {
+		setIsMenuOpen((prevState) => !prevState);
+	};
 
 	return (
 		<div className="flex flex-col mt-4 text-center">
@@ -27,6 +32,7 @@ export const Header = () => {
 			</div>
 
 			<div
+				data-testid="menuContainer"
 				className={`flex flex-col items-center transition-all will-change-transform ${clsx(
 					{
 						"-translate-y-14": !isMenuOpen,
@@ -34,7 +40,10 @@ export const Header = () => {
 				)}`}
 			>
 				<Menu
-					defaultActiveItems={[0]}
+					defaultActiveItems={["black and white", "low-key"]}
+					onActiveItemsChange={(activeItems) =>
+						onActiveItemsChange(activeItems)
+					}
 					className={`transition-opacity will-change-auto ${clsx({
 						"opacity-0": !isMenuOpen,
 					})}`}
@@ -46,7 +55,7 @@ export const Header = () => {
 							"opacity-20": !isMenuOpen,
 						},
 					)}`}
-					clickHandler={handleMenuVisibility}
+					onClick={handleMenuVisibility}
 				/>
 			</div>
 		</div>
