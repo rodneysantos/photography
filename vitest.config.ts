@@ -1,12 +1,19 @@
 /// <reference types="vitest" />
-
-import react from "@vitejs/plugin-react";
+/// <reference types="vite/client" />
 import { defineConfig } from "vite";
+import solidPlugin from "vite-plugin-solid";
 
 export default defineConfig({
-	test: {
-		globals: true,
-		environment: "happy-dom",
+	plugins: [solidPlugin()],
+	server: {
+		port: 3000,
 	},
-	plugins: [react()],
+	build: {
+		target: "esnext",
+	},
+	test: {
+		environment: "jsdom",
+		globals: true,
+		transformMode: { web: [/\.[jt]sx?$/] },
+	},
 });

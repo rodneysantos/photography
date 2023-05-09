@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: big-shoulder;
+  src: url(./assets/fonts/big-shoulders-display-bold.ttf) format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: dosis;
+  src: url(./assets/fonts/dosis-regular.ttf) format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: dosis;
+  src: url(./assets/fonts/dosis-medium.ttf) format('truetype');
+  font-weight: 500;
+}
+
+html,
+body {
+    @apply text-base;
+    @apply text-slate-700;
+    @apply tracking-wide;
+}
