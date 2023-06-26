@@ -1,50 +1,28 @@
-// import brush from "./assets/images/2023-02-14 01.jpg";
-// import dinosaur from "./assets/images/DSCF0907.jpg";
-// import cat from "./assets/images/DSCF1916.jpg";
-// import dog from "./assets/images/DSCF7471.jpg";
-// import leaf from "./assets/images/DSCF7055.jpg";
+import { For } from "solid-js";
+import { Photo } from "../models";
 
-export const Gallery = () => {
+interface GalleryProps {
+	photos: Photo[];
+}
+
+export const Gallery = (props: GalleryProps) => {
 	return (
 		<div class="flex justify-center">
-			<div class="container grid grid-cols-2 gap-12 3xl:auto-rows-3xl 4xl:auto-rows-4xl 5xl:auto-rows-5xl">
-				{/* <img
-					class="object-cover object-center w-full h-full aspect-square"
-					src={brush}
-					alt=""
-				/>
-
-				<div>
-					<img
-						class="object-cover object-center w-full h-full aspect-square"
-						src={dinosaur}
-						alt=""
-					/>
-				</div>
-
-				<div>
-					<img
-						class="object-cover object-center w-full h-full aspect-square"
-						src={cat}
-						alt=""
-					/>
-				</div>
-
-				<div>
-					<img
-						class="object-cover object-center w-full h-full aspect-square"
-						src={dog}
-						alt=""
-					/>
-				</div>
-
-				<div>
-					<img
-						class="object-cover object-center w-full h-full"
-						src={leaf}
-						alt=""
-					/>
-				</div> */}
+			<div
+				data-testid="gallery-list"
+				class="container grid grid-cols-2 gap-12 3xl:auto-rows-3xl 4xl:auto-rows-4xl 5xl:auto-rows-5xl"
+			>
+				<For each={props.photos}>
+					{(photo) => {
+						return (
+							<img
+								class="object-cover object-center w-full h-full aspect-square"
+								src={photo.url}
+								alt=""
+							/>
+						);
+					}}
+				</For>
 			</div>
 		</div>
 	);

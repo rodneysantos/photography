@@ -29,7 +29,6 @@ describe("header", () => {
 
 		// act
 		fireEvent.click(getByTestId("chevronDownIcon"));
-		console.log(getByTestId("chevronDownIcon").getAttribute("class"));
 
 		// assert
 		expect(getByTestId("menuContainer").className).not.toContain(
@@ -47,7 +46,7 @@ describe("header", () => {
 		));
 
 		// act
-		const blackAndWhiteItem = getByTestId("black and white");
+		const blackAndWhiteItem = getByTestId("bnw");
 		blackAndWhiteItem.click();
 
 		// assert

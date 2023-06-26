@@ -30,15 +30,13 @@ describe("menu", () => {
 		const { getByTestId } = render(() => (
 			<Menu
 				show={true}
-				defaultActiveItems={["black and white", "low-key"]}
+				defaultActiveItems={["bnw", "low-key"]}
 				onActiveItemsChange={onActiveItemsChange}
 			/>
 		));
 
 		// assert
-		expect(getByTestId("black and white").className).toContain(
-			"bg-neutral-900",
-		);
+		expect(getByTestId("bnw").className).toContain("bg-neutral-900");
 		expect(getByTestId("low-key").className).toContain("bg-neutral-900");
 	});
 
@@ -64,18 +62,16 @@ describe("menu", () => {
 		const { getByTestId } = render(() => (
 			<Menu
 				show={true}
-				defaultActiveItems={["black and white"]}
+				defaultActiveItems={["bnw"]}
 				onActiveItemsChange={onActiveItemsChange}
 			/>
 		));
 
 		// act
-		getByTestId("black and white").click();
+		getByTestId("bnw").click();
 
 		// assert
-		expect(getByTestId("black and white").className).not.toContain(
-			"bg-neutral-900",
-		);
+		expect(getByTestId("bnw").className).not.toContain("bg-neutral-900");
 	});
 
 	test("emits the active items on click", () => {

@@ -1,10 +1,10 @@
 import { createSignal } from "solid-js";
 import { ChevronDownIcon } from "./chevron-down-icon";
-import { Item, Menu } from "./menu";
+import { MenuKey, Menu } from "./menu";
 
 interface HeaderProps {
 	// The function that is called when the active items change.
-	onActiveItemsChange: (activeItems: Item[]) => void;
+	onActiveItemsChange: (activeItems: MenuKey[]) => void;
 }
 
 export const Header = ({ onActiveItemsChange }: HeaderProps) => {
@@ -34,7 +34,7 @@ export const Header = ({ onActiveItemsChange }: HeaderProps) => {
 				classList={{ "-translate-y-14": !isMenuOpen() }}
 			>
 				<Menu
-					defaultActiveItems={["black and white", "low-key"]}
+					defaultActiveItems={["bnw", "low-key"]}
 					onActiveItemsChange={onActiveItemsChange}
 					show={isMenuOpen()}
 				/>
