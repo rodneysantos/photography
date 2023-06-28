@@ -2,7 +2,11 @@ import { For } from "solid-js";
 import { Photo } from "../models";
 
 interface GalleryProps {
+	// The photos to display.
 	photos: Photo[];
+
+	// The function that is called when a photo is clicked.
+	onPhotoClick: (photo: Photo) => void;
 }
 
 export const Gallery = (props: GalleryProps) => {
@@ -19,6 +23,7 @@ export const Gallery = (props: GalleryProps) => {
 								class="object-cover object-center w-full h-full aspect-square"
 								src={photo.url}
 								alt=""
+								onClick={() => props.onPhotoClick(photo)}
 							/>
 						);
 					}}
