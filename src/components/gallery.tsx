@@ -12,10 +12,10 @@ interface GalleryProps {
 
 export const Gallery = (props: GalleryProps) => {
 	return (
-		<div class="flex justify-center">
+		<div class="flex justify-center p-4">
 			<div
 				data-testid="gallery-list"
-				class="container grid grid-cols-2 gap-12 3xl:auto-rows-3xl 4xl:auto-rows-4xl 5xl:auto-rows-5xl"
+				class="container grid grid-cols-1 gap-12 sm:grid-cols-2 3xl:auto-rows-3xl 4xl:auto-rows-4xl 5xl:auto-rows-5xl"
 			>
 				<For each={props.photos}>
 					{(photo) => {

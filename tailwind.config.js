@@ -21,6 +21,7 @@ module.exports = {
 				"5xl": "64rem",
 			},
 			letterSpacing: {
+        "xs": "0.45rem",
 				"4xl": "1rem",
 				"5xl": "1.01rem",
 			},
@@ -33,6 +34,9 @@ module.exports = {
 				"4xl": "1920px",
 				"5xl": "2560px",
 			},
+      translate: {
+        "1/10": "0.1rem",
+      },
 		},
 	},
 	plugins: [],

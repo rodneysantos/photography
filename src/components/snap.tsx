@@ -18,7 +18,7 @@ export const Snap = (props: SnapProps) => {
 
 	return (
 		<img
-			class="object-cover object-center w-full h-full aspect-square"
+			class="object-cover object-center w-full h-full"
 			loading="lazy"
 			src={props.photo.url}
 			alt={props.alt}

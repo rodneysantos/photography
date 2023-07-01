@@ -17,13 +17,13 @@ export const Header = ({ onActiveItemsChange }: HeaderProps) => {
 	};
 
 	return (
-		<div class="flex flex-col text-center 4xl:mt-14 5xl:mt-16 5xl:mb-4">
+		<div class="flex flex-col text-center mt-14 5xl:mt-16 5xl:mb-4">
 			<div class="z-10 mb-4 bg-white">
-				<div class="tracking-widest 3xl:text-3xl 4xl:text-4xl 5xl:text-5xl font-big-shoulder">
+				<div class="tracking-widest text-3xl font-big-shoulder">
 					RODNEY SANTOS
 				</div>
 
-				<div class="text-base font-dosis 5xl:text-2xl 4xl:text-xl 4xl:ml-[0.37rem] 4xl:tracking-[0.69rem] 5xl:ml-5xl 5xl:tracking-5xl">
+				<div class="text-xl tracking-xs translate-x-1/10 font-dosis">
 					PHOTOGRAPHY
 				</div>
 			</div>

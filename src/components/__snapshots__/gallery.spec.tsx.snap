@@ -1,3 +1,3 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`gallery > renders correctly 1`] = `"<div class=\\"flex justify-center\\"><div data-testid=\\"gallery-list\\" class=\\"container grid grid-cols-2 gap-12 3xl:auto-rows-3xl 4xl:auto-rows-4xl 5xl:auto-rows-5xl\\"></div></div>"`;
+exports[`gallery > renders correctly 1`] = `"<div class=\\"flex justify-center p-4\\"><div data-testid=\\"gallery-list\\" class=\\"container grid grid-cols-1 gap-12 sm:grid-cols-2 3xl:auto-rows-3xl 4xl:auto-rows-4xl 5xl:auto-rows-5xl\\"></div></div>"`;

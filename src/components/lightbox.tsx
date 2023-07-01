@@ -14,13 +14,13 @@ export const Lightbox = (props: LightboxProps) => {
 		<Show when={props.photo !== undefined}>
 			<div
 				data-testid="lightbox"
-				class="fixed top-0 left-0 z-50 flex items-center justify-center w-screen h-full p-2 bg-black bg-opacity-60"
+				class="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full bg-black bg-opacity-60"
 			>
-				<div class="relative h-full p-2 bg-white">
+				<div class="relative bg-white">
 					<div class="absolute top-0 right-0 z-50 p-4">
 						<button
 							data-testid="lightbox-close"
-							class="p-2 transition-colors rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
+							class="p-2 transition-colors rounded-full"
 							onClick={props.onClose}
 						>
 							<svg
@@ -42,7 +42,7 @@ export const Lightbox = (props: LightboxProps) => {
 
 					<img
 						data-testid="lightbox-photo"
-						class="h-full"
+						class="h-full p-2 bg-white min-md:h-screen"
 						src={props.photo!.url}
 						alt=""
 					/>
