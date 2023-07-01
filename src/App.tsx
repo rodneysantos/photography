@@ -1,10 +1,18 @@
-import { Component, Suspense, createResource, createSignal } from "solid-js";
-import { Gallery } from "./components/gallery";
-import { Header } from "./components/header";
-import { Lightbox } from "./components/lightbox";
-import { MenuKey } from "./components/menu";
+import {
+	Component,
+	Suspense,
+	createResource,
+	createSignal,
+	onMount,
+} from "solid-js";
+import { Gallery, Header, Lightbox, MenuKey } from "./components";
 import type { Photo } from "./models";
 import { fetchPhotosByTags } from "./service";
+import {
+	getSelectedPhoto,
+	hasSelectedPhoto,
+	updateSelectedPhoto,
+} from "./service/url";
 
 const App: Component = () => {
 	const [clickedPhoto, setClickedPhoto] = createSignal<Photo>();
@@ -18,6 +26,12 @@ const App: Component = () => {
 		{ initialValue: [] },
 	);
 
+	onMount(() => {
+		if (hasSelectedPhoto()) {
+			setClickedPhoto({ url: getSelectedPhoto()! });
+		}
+	});
+
 	function handleActiveItemsChange(activeItems: MenuKey[]) {
 		setActiveMenuItems(activeItems);
 		refetch();
@@ -25,10 +39,12 @@ const App: Component = () => {
 
 	function handlePhotoClick(photo: Photo) {
 		setClickedPhoto(photo);
+		updateSelectedPhoto(photo);
 	}
 
 	function handleClose() {
 		setClickedPhoto(undefined);
+		updateSelectedPhoto(null);
 	}
 
 	return (

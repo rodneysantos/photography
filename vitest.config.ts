@@ -24,5 +24,6 @@ export default defineConfig({
     },
     globals: true,
     transformMode: { web: [/\.[jt]sx?$/] },
+    unstubGlobals: true,
   },
 });
