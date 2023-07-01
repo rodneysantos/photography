@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`snap > matches snapshot 1`] = `"<img class=\\"object-cover object-center w-full h-full aspect-square\\" loading=\\"lazy\\" src=\\"image.jpg\\" alt=\\"photo\\">"`;

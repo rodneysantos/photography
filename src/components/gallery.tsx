@@ -1,5 +1,6 @@
 import { For } from "solid-js";
 import { Photo } from "../models";
+import { Snap } from "./snap";
 
 interface GalleryProps {
 	// The photos to display.
@@ -18,14 +19,7 @@ export const Gallery = (props: GalleryProps) => {
 			>
 				<For each={props.photos}>
 					{(photo) => {
-						return (
-							<img
-								class="object-cover object-center w-full h-full aspect-square"
-								src={photo.url}
-								alt=""
-								onClick={() => props.onPhotoClick(photo)}
-							/>
-						);
+						return <Snap photo={photo} alt="" onClick={props.onPhotoClick} />;
 					}}
 				</For>
 			</div>
