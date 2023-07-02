@@ -1,2 +1,8 @@
+[context.dev]
+  environment = { NETLIFY_FUNCTION_BASE_URL = "http://localhost:8888" }
+
+[context.production]
+  environment = { NETLIFY_FUNCTION_BASE_URL = "https://rodneysantosphoto.netlify.app" }
+
 [functions]
   directory = "api/functions"

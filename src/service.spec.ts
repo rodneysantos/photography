@@ -19,7 +19,9 @@ describe("service", () => {
 		// assert
 		expect(photos).toEqual(data);
 		expect(fetch).toHaveBeenCalledWith(
-			`http://localhost:8888/.netlify/functions/search?tags=${tags.join(",")}`,
+			expect.stringContaining(
+				`.netlify/functions/search?tags=${tags.join(",")}`,
+			),
 		);
 	});
 });
