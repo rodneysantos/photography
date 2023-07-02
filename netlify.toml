@@ -1,8 +1,22 @@
-[context.dev]
-  environment = { NETLIFY_FUNCTION_BASE_URL = "http://localhost:8888" }
+[build]
+  command = "npm run build:ui"
+  functions = "api/functions"
+  publish = "dist"
 
-[context.production]
-  environment = { NETLIFY_FUNCTION_BASE_URL = "https://rodneysantosphoto.netlify.app" }
+[build.dev.environment]
+  VITE_NETLIFY_FUNCTION_BASE_URL = "http://localhost:8888"
+
+[build.production.environment]
+  VITE_NETLIFY_FUNCTION_BASE_URL = "https://rodneysantosphoto.netlify.app"
+
+[context.dev.environment]
+  VITE_NETLIFY_FUNCTION_BASE_URL = "http://localhost:8888"
+
+[context.production.environment]
+  VITE_NETLIFY_FUNCTION_BASE_URL = "https://rodneysantosphoto.netlify.app"
+
+[dev]
+  command = "npm run dev:ui"
 
 [functions]
   directory = "api/functions"

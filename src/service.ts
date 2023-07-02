@@ -4,7 +4,7 @@ interface Photo {
 
 export async function fetchPhotosByTags(tags: string[]): Promise<Photo[]> {
 	const baseURL = `${
-		import.meta.env.NETLIFY_FUNCTION_BASE_URL
+		import.meta.env.VITE_NETLIFY_FUNCTION_BASE_URL
 	}/.netlify/functions/search`;
 	const url = `${baseURL}?tags=${tags.join(",")}`;
 	const res = await fetch(url);
